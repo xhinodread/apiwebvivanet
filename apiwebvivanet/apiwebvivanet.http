@@ -1,0 +1,6 @@
+@apiwebvivanet_HostAddress = http://localhost:5190
+
+GET {{apiwebvivanet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
