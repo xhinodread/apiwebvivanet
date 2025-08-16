@@ -52,6 +52,14 @@ namespace apiwebvivanet.Controllers
 		}
 		*****/
 
+		[HttpPost]
+		[Route("updateParametroImpuesto")]
+		public async Task<IActionResult> UpdateParametroImpuesto(ImpuestoUnicoDto impuestoUnicoDto)
+		{
+			Console.WriteLine(impuestoUnicoDto);
+			return new OkObjectResult(impuestoUnicoDto);
+		}
+
 		[HttpGet]
 		[Route("GetByPeriodo")]
 		public async Task<IActionResult> GetByPeriodo(string? periodo = null)
@@ -73,6 +81,7 @@ namespace apiwebvivanet.Controllers
 			{
 				var objDto = new ImpuestoUnicoDto()
 				{
+					Id = item.Id.ToString(),
 					Desde = item.Desde.ToString(),
 					Hasta = item.Hasta.ToString(),
 					Factor = item.Factor.ToString(),

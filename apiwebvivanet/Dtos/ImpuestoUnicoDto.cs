@@ -3,6 +3,7 @@
 	/*****/
 	public class ImpuestoUnicoDto
 	{
+		public string Id { get; set; }
 		public string Desde { get; set; }
 		public string Hasta { get; set; }
 		public string Factor { get; set; }
