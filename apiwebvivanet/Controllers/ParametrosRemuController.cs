@@ -1,6 +1,7 @@
 ﻿//using System.Linq;
 //using apiwebvivanet.basedatos;
 using System.Linq;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using apiwebvivanet.Dtos;
 using apiwebvivanet.Utils;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //using Microsoft.IdentityModel.Tokens;
 
@@ -68,6 +70,12 @@ namespace apiwebvivanet.Controllers
 			{
 				return new BadRequestObjectResult("Formato de periodo inválido...");
 			}
+
+			var hostHeader = HttpContext.Request.Headers; // ["Host"].FirstOrDefault();
+			Console.WriteLine("Request.Headers");
+			//Console.WriteLine(Request.Headers);
+			Console.WriteLine(JsonSerializer.Serialize(hostHeader) );
+			Console.WriteLine("***************");
 
 			var consulta = _getImpuestoUnicoUseCase.ExecuteAsync(periodo).Result;
 			//Console.WriteLine("consulta GetByPeriodo");
