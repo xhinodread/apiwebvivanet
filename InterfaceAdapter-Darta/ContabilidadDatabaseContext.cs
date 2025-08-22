@@ -11,6 +11,9 @@ namespace InterfaceAdapter_Darta
 		}
 
 		public DbSet<ParametroRangoRemuneracionEntity> ParametroRangoRemuneracion { get; set; }
+		public DbSet<DocumentoDteEntity> DocumentoDte { get; set; }
+
+		
 
 		//protected override void OnModelCreating(ModelBuilder modelBuilder)
 		//{

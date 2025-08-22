@@ -23,6 +23,7 @@ builder.Services.AddDbContext<ContabilidadDatabaseContext>(sqlServerBuilder => {
 builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddScoped<GetRangoRemuneracionUseCase>();
 builder.Services.AddScoped<GetImpuestoUnicoUseCase>();
+builder.Services.AddScoped<GetDteEmitidosUseCase>();
 //builder.Services.AddScoped<General>();
 
 
