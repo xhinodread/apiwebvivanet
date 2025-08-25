@@ -1,21 +1,24 @@
 ﻿
+using System.Linq.Expressions;
 using AplicationLayer;
 using EnterpriseLayer;
 using InterfaceAdapter_Darta;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace InterfaceAdapter_Repository
 {
-	public class Repository : IRepository
+	public class Repository: IRepository
 	{
 		private readonly ContabilidadDatabaseContext _dbContext;
+		private int _pageSize = 10;
 
-        public Repository(ContabilidadDatabaseContext dbContext)
+		public Repository(
+			ContabilidadDatabaseContext dbContext
+			)
         {
             _dbContext = dbContext;
-        }
+		}
 
 		public async Task<IEnumerable<DocumentoDteEntity>> GetDteEmitidosAsync(int _pageNumber = 1)
 		{
@@ -23,10 +26,10 @@ namespace InterfaceAdapter_Repository
 			var pageSize = 10;
 			int skipCount = (pageNumber - 1) * pageSize;
 
-			Console.WriteLine("GetDteEmitidosAsync paginador...");
-			Console.WriteLine(pageNumber);
-			Console.WriteLine(pageSize);
-			Console.WriteLine(skipCount);
+			//Console.WriteLine("GetDteEmitidosAsync paginador...");
+			//Console.WriteLine(pageNumber);
+			//Console.WriteLine(pageSize);
+			//Console.WriteLine(skipCount);
 
 			var consulta = await _dbContext.DocumentoDte
 				.Where(u => u.IdTipoDte == 1
@@ -104,5 +107,7 @@ namespace InterfaceAdapter_Repository
 			return consulta;
 
 		}
+
+	
 	}
 }

@@ -1,4 +1,5 @@
-﻿using EnterpriseLayer;
+﻿using System.Linq.Expressions;
+using EnterpriseLayer;
 
 namespace AplicationLayer
 {
@@ -8,7 +9,7 @@ namespace AplicationLayer
 		Task<IEnumerable<ParametroRangoRemuneracionEntity>> GetByDateAsync(int? anio = null); // GetAllAsync()
 		Task<IEnumerable<ParametroRangoRemuneracionEntity>> GetByMesAsync(string? periodo= null);
 		Task<IEnumerable<DocumentoDteEntity>> GetDteEmitidosAsync(int _pageNumber= 1);
-
+		
 		//Task AddAsync(ParametroRangoRemuneracionEntity valor);
 	}
 }

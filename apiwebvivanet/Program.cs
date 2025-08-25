@@ -1,6 +1,7 @@
 //using apiwebvivanet.basedatos;
 using apiwebvivanet.Utils;
 using AplicationLayer;
+using EnterpriseLayer;
 using InterfaceAdapter_Darta;
 using InterfaceAdapter_Repository;
 using Microsoft.EntityFrameworkCore;
@@ -21,10 +22,18 @@ builder.Services.AddDbContext<ContabilidadDatabaseContext>(sqlServerBuilder => {
 });
 
 builder.Services.AddScoped<IRepository, Repository>();
+
+//builder.Services.AddScoped<IRepositoryFiltro<DocumentoDteEntity>, RepositoryFiltros<DocumentoDteEntity>();
+builder.Services.AddScoped(typeof(IRepositoryFiltro<>), typeof(RepositoryFiltros<>));
+
 builder.Services.AddScoped<GetRangoRemuneracionUseCase>();
 builder.Services.AddScoped<GetImpuestoUnicoUseCase>();
 builder.Services.AddScoped<GetDteEmitidosUseCase>();
+
+// Se inyecta el caso de uso, que a su vez recibirá el IRepositoryFiltro por inyección de dependencias.
+builder.Services.AddScoped<GetDteEmitidosFiltroUseCase>();
 //builder.Services.AddScoped<General>();
+
 
 
 
